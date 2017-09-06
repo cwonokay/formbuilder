@@ -105,9 +105,9 @@ let co = document.getElementById("fields")
 for (var i = 0; i < formData.length; i++) {
   let input = document.createElement("input")
 
-  let select = document.createElement("select")
 
-  if (formData[i].options.length === 0) {
+
+  if (formData[i].options.length == 0) {
     input.setAttribute("type","text")
     input.setAttribute("id","text")
     input.setAttribute("placeholder",formData[i].label)
@@ -116,17 +116,18 @@ for (var i = 0; i < formData.length; i++) {
   }
 
   else {
-
-    select.setAttribute("options", formData[i].options[0].label)
+    let select = document.createElement("select")
+    select.setAttribute("id","select")
     co.appendChild(select)
-
+    select = document.getElementById('select')
 
     for (var j = 0; j < formData[i].options.length; j++) {
-      let options = document.createElement("options");
-      options.setAttribute("lable", formData[i].options[j].lable);
+      let options = document.createElement("option");
+      options.setAttribute("label", formData[i].options[j].label);
       options.setAttribute("value", formData[i].options[j].value);
 
-      co.appendChild(options)
+
+      select.appendChild(options)
     }
   }
 }
